@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.grxeventos.grxeventos.MainActivity"
+    tools:ignore="MergeRootFrame" >
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="312dp"
+        android:layout_gravity="bottom" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal|right"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/imageButton2"
+            android:onClick="anterior"
+            android:src="@drawable/flecha"
+            android:background="#00ff0355" />
+
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/imageButton3"
+            android:onClick="siguiente"
+            android:src="@drawable/flecha2"
+            android:background="#00ff0355" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imagenEvento"
+        android:layout_width="fill_parent"
+        android:layout_height="202dp"
+        android:src="@drawable/nodisponible"
+        android:scaleType="fitXY" />
+
+</FrameLayout>
+

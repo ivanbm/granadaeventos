@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <color name="white">#FFFFFF</color>
+     <color name="black">#FF000000</color>
+     <color name="transparent">#00000000</color>
+     <color name="biosanitario">#ffff2e7b</color>
+	 <color name="diseno_artes_graficas">#ffff9900</color>
+	 <color name="economia">#ff0097ff</color>
+	 <color name="educacion_sociedad">#ff00d779</color>
+	 <color name="energia_medio_ambiente">#ffe8e756</color>
+	 <color name="idiomas">#ffff093a</color>
+	 <color name="juridico">#ffbc65d7</color>
+	 <color name="tecnologias">#ffe3c000</color>
+	 <color name="orienta">#EF8225</color> 
+	 <color name="barraActivity">#ffff0068</color>
+	 <color name="letras_canales">#FFFFFF</color>
+</resources>

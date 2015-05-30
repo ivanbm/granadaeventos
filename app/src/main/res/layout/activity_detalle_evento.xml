@@ -1,0 +1,157 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="com.grxeventos.grxeventos.DetalleEvento"
+    tools:ignore="MergeRootFrame"
+    android:weightSum="1"
+    android:background="#fffffefa">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titEvt"
+        android:gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:id="@+id/tv2_nombre_evento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="TextView"
+            android:textSize="22sp"
+            android:textColor="#fffcf6ff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img2_imagen_evento"
+            android:layout_width="121dp"
+            android:layout_height="166dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/nodisponible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="@color/background_material_light"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circulo"
+                android:gravity="center_vertical|center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv2_fecha_evento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="TextView"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#fffff6ef" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"
+                    android:id="@+id/tv2_mes_evento"
+                    android:textStyle="bold"
+                    android:textColor="#fffffeef" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circuloprecio"
+                android:gravity="center_vertical|center_horizontal"
+                android:focusable="false">
+
+                <TextView
+                    android:id="@+id/tv2_precio_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="TextView"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#fff6fff4" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/imageButton"
+                android:src="@drawable/local"
+                android:onClick="localizacion"
+                android:background="#00ff0355" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción:"
+            android:id="@+id/textView"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv2_descripcion_detalle_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
