@@ -70,8 +70,8 @@
             android:label="@string/title_activity_mapa" >
         </activity>
         <activity
-            android:name=".MenuLateral"
-            android:label="@string/title_activity_menu_lateral" >
+            android:name=".SobreNosotros"
+            android:label="@string/title_activity_sobre_nosotros" >
         </activity>
     </application>
 

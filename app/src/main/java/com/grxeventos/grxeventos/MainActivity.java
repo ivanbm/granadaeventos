@@ -15,8 +15,12 @@ import org.json.JSONTokener;
 
 import com.grxeventos.grxeventos.R.drawable;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
+//import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,7 +32,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,21 +51,32 @@ public class MainActivity extends ActionBarActivity {
 	private String url = c.getURL()+"eventos/php/categorias.php";
 	JSONArray eventos = null;
 	
-	  private static final String TAG_IDEVENTO = "idevento";
-	  private static final String TAG_NOMBRE = "nombre";
-	  private static final String TAG_DESCRIP = "descripcion";
-	  private static final String TAG_FECHA = "fecha";
-	  private static final String TAG_PRECIO = "precio";
-	  private static final String TAG_IDLOCALIZACION = "idlocalizacion";
-	  private static final String TAG_IDUSUARIO = "idusuario";
-	  private static final String TAG_IDCATEGORIA = "idcategoria";
-	  private static final String TAG_APROBADO = "aprobado";
-	  
+    private static final String TAG_IDEVENTO = "idevento";
+    private static final String TAG_NOMBRE = "nombre";
+    private static final String TAG_DESCRIP = "descripcion";
+    private static final String TAG_FECHA = "fecha";
+    private static final String TAG_PRECIO = "precio";
+    private static final String TAG_IDLOCALIZACION = "idlocalizacion";
+    private static final String TAG_IDUSUARIO = "idusuario";
+    private static final String TAG_IDCATEGORIA = "idcategoria";
+    private static final String TAG_APROBADO = "aprobado";
+
+    //-------------------   DRAWER --------------------
+    private static String TAG = MainActivity.class.getSimpleName();
+    ListView listaDrawer;
+    RelativeLayout contDrawer;
+    private ActionBarDrawerToggle drawerToggle;
+    private DrawerLayout drawerLayout;
+    ArrayList<ElementoDrawer> elemsDrawer = new ArrayList<ElementoDrawer>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+        llenarDrawer();
+
+
 		event = new ContenedorEventos();
 		i = (ImageView) findViewById(R.id.imagenEvento);
 		i.setImageResource(R.drawable.cine);
@@ -97,8 +115,9 @@ public class MainActivity extends ActionBarActivity {
         
         categoriaEnCurso = pager.getCurrentItem();
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
+			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+            //getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
 	
@@ -117,7 +136,7 @@ public class MainActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
@@ -289,6 +308,57 @@ public class MainActivity extends ActionBarActivity {
 			break;
 		}
 	}
+
+
+    public void llenarDrawer(){
+        elemsDrawer.add(new ElementoDrawer("Favoritos", "Mis eventos favoritos", drawable.ic_menu_star));
+        elemsDrawer.add(new ElementoDrawer("Ajustes", "Edita tus preferencias", drawable.ic_menu_preferences));
+        elemsDrawer.add(new ElementoDrawer("About", "Sobre nosotros", drawable.ic_menu_info_details));
+
+        // DrawerLayout
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
+        // Populate the Navigtion Drawer with options
+        contDrawer = (RelativeLayout) findViewById(R.id.drawerPane);
+        listaDrawer = (ListView) findViewById(R.id.navList);
+        AdaptadorDrawer adapter = new AdaptadorDrawer(this, elemsDrawer);
+        listaDrawer.setAdapter(adapter);
+
+        // Drawer Item click listeners
+        listaDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                seleccionElementoDrawer(position);
+            }
+        });
+    }
+
+
+    private void seleccionElementoDrawer(int position) {
+        Fragment fragment = new PreferenciasFragDrawer();
+
+        if(position == 0){
+            Intent intent = new Intent(getBaseContext(), Favoritos.class);
+            startActivity(intent);
+        }else if(position == 1){
+
+        }else if(position == 2){
+            Intent intent = new Intent(getBaseContext(), SobreNosotros.class);
+            startActivity(intent);
+        }
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.mainContent, fragment)
+                .commit();
+
+        listaDrawer.setItemChecked(position, true);
+        setTitle(elemsDrawer.get(position).titulo);
+
+        // Close the drawer
+        drawerLayout.closeDrawer(contDrawer);
+    }
+
 
 }
 
